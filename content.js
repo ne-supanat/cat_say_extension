@@ -1,4 +1,6 @@
 var texts = [];
+var cats = [];
+var saying = false;
 
 main();
 
@@ -10,32 +12,37 @@ function main() {
 }
 
 function createIframe() {
-  const iframe = document.createElement("iframe");
+  const div = document.createElement("div");
+  div.id = "render_div";
+  div.innerHTML = `<img id="cat_image" class="img-fluid" style="height: 150px;" src="" alt="cat"></img>`;
+  div.style.cssText =
+    "display: none; position: fixed; bottom: 10px; right: 0px; width: 150px; height: 150px; z-index: 9998; border: none;";
 
-  iframe.src = chrome.runtime.getURL("render.html");
-  iframe.setAttribute("allowtransparency", "true");
-  iframe.setAttribute("scrolling", "no");
-  iframe.setAttribute("frameborder", "0");
+  const div2 = document.createElement("div");
+  div2.id = "bubble_text_div";
+  div2.innerHTML = `<span id="bubble_text" class="bg-light text-dark text_bubble mx-auto p-2 mb-2 w-100 text-break">Meow</span>`;
+  div2.style.cssText =
+    "display: none; position: fixed; bottom: 130px; right: 40px;";
 
-  iframe.style.cssText =
-    "color-scheme: light; display: none; background-color: transparent; position: fixed; bottom: 0; right: 0; width: 300px; height: 300px; z-index: 9999; border: none;";
-
-  document.body.appendChild(iframe);
-
-  return iframe;
+  document.body.appendChild(div);
+  document.body.appendChild(div2);
 }
 
-function loadResource(iframe) {
+function loadResource() {
   fetch(chrome.runtime.getURL("static/data.json"))
     .then((response) => response.json())
     .then((data) => {
       texts = data.texts;
+      cats = data.cats;
 
-      chrome.storage.sync.get(["show_render"], function (result) {
+      chrome.storage.sync.get(["cat_index", "show_render"], function (result) {
+        const cat_index = result.cat_index ?? 0;
+        renderCat(cat_index);
+
         if (result.show_render) {
-          iframe.style.display = "block";
+          document.getElementById("render_div").style.display = "block";
         } else {
-          iframe.style.display = "none";
+          document.getElementById("render_div").style.display = "none";
         }
       });
     })
@@ -51,7 +58,6 @@ function handleEvents(iframe) {
     sendResponse
   ) {
     const show_render = request.show_render;
-
     if (iframe && show_render != undefined) {
       if (show_render) {
         iframe.style.display = "block";
@@ -59,5 +65,39 @@ function handleEvents(iframe) {
         iframe.style.display = "none";
       }
     }
+
+    const cat_index = request.cat_index;
+    if (cat_index != undefined) {
+      renderCat(cat_index);
+    }
   });
+
+  document.getElementById("cat_image").addEventListener("click", onClickSay);
+}
+
+function renderCat(cat_index) {
+  document.getElementById("cat_image").src = chrome.runtime.getURL(
+    cats[cat_index].image
+  );
+}
+
+function onClickSay() {
+  if (!saying) {
+    document.getElementById("bubble_text").innerHTML = `"${generateText()}"`;
+
+    saying = true;
+    document.getElementById("bubble_text_div").style.display = "block";
+    delay(2000).then(() => {
+      document.getElementById("bubble_text_div").style.display = "none";
+      saying = false;
+    });
+  }
+}
+
+function generateText() {
+  return texts[Math.floor(Math.random() * texts.length)];
+}
+
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
