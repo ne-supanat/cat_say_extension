@@ -5,13 +5,13 @@ var saying = false;
 main();
 
 function main() {
-  const iframe = createIframe();
+  createElement();
 
-  loadResource(iframe);
-  handleEvents(iframe);
+  loadResource();
+  handleEvents();
 }
 
-function createIframe() {
+function createElement() {
   const div = document.createElement("div");
   div.id = "render_div";
   div.innerHTML = `<img id="cat_image" class="img-fluid" style="height: 150px;" src="" alt="cat"></img>`;
@@ -20,9 +20,9 @@ function createIframe() {
 
   const div2 = document.createElement("div");
   div2.id = "bubble_text_div";
-  div2.innerHTML = `<span id="bubble_text" class="bg-light text-dark text_bubble mx-auto p-2 mb-2 w-100 text-break">Meow</span>`;
+  div2.innerHTML = `<div id="bubble_text" style="border-radius: 16px 16px 0px 16px; background-color: #f1f1f1; color: black; padding: 8px; margin: 8px;">Meow</div>`;
   div2.style.cssText =
-    "display: none; position: fixed; bottom: 130px; right: 40px;";
+    "display: none; position: fixed; bottom: 120px; right: 25px;";
 
   document.body.appendChild(div);
   document.body.appendChild(div2);
@@ -51,18 +51,18 @@ function loadResource() {
     });
 }
 
-function handleEvents(iframe) {
+function handleEvents() {
   chrome.runtime.onMessage.addListener(function (
     request,
     sender,
     sendResponse
   ) {
     const show_render = request.show_render;
-    if (iframe && show_render != undefined) {
+    if (show_render != undefined) {
       if (show_render) {
-        iframe.style.display = "block";
+        document.getElementById("render_div").style.display = "block";
       } else {
-        iframe.style.display = "none";
+        document.getElementById("render_div").style.display = "none";
       }
     }
 
