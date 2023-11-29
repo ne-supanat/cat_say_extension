@@ -15,22 +15,23 @@
 
 <body>
     <div class="p-2">
-        <img id="image" class="rounded mx-auto d-block w-50 mb-4" src="" alt="cat">
-        <div class="row">
-            <div class="col">
-                <button id="prev_cat" type="button" class="btn btn-primary btn-sm w-100">&lt;</button>
+        <img id="image" class="mx-auto d-block w-50 mb-2" style="margin-top: -25px;" src="" alt="cat">
+        <div class="row mb-2">
+            <div class="col d-flex justify-content-center">
+                <a id="prev_cat" class="index_btn">&#8249;</a>
             </div>
             <div class="col">
-                <p id="cat_specie" class="text-center"> Persia </p>
+                <p id="cat_specie" class="text-center" style="margin-top: 8px; margin-bottom: 8px; font-size: 20px;">
+                    Persia </p>
             </div>
-            <div class="col">
-                <button id="next_cat" type="button" class="btn btn-primary btn-sm w-100">&gt;</button>
+            <div class="col d-flex justify-content-center">
+                <a id="next_cat" class="index_btn">&#8250;</a>
             </div>
         </div>
         <div>
-            <button id="render" type="button" class="btn btn-primary btn-sm w-100">Go out</button>
-            <button id="remove" type="button" class="btn btn-primary btn-sm w-100" style="display: none;">Come
-                back</button>
+            <div id="render" type="button" class=" mx-2 render_btn">Go out</div>
+            <div id="remove" type="button" class=" mx-2 render_btn" style="display: none;">Come
+                back</div>
 
         </div>
     </div>
