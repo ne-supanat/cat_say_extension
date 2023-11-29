@@ -1,0 +1,54 @@
+{
+    "texts": [
+        "Meow",
+        "mmmmmmmmmmmmmmmmmmmmm2...",
+        "mmmmmmmmmmmmmmmmmmmmm3...",
+        "mmmmmmmmmmmmmmmmmmmmm4...",
+        "mmmmmmmmmmmmmmmmmmmmm5...",
+        "Meow",
+        "mmmmmmmmmmmmmmmmmmmmm2...",
+        "mmmmmmmmmmmmmmmmmmmmm3...",
+        "mmmmmmmmmmmmmmmmmmmmm4...",
+        "mmmmmmmmmmmmmmmmmmmmm5...",
+        "Meow",
+        "mmmmmmmmmmmmmmmmmmmmm2...",
+        "mmmmmmmmmmmmmmmmmmmmm3...",
+        "mmmmmmmmmmmmmmmmmmmmm4...",
+        "mmmmmmmmmmmmmmmmmmmmm5...",
+        "Meow",
+        "mmmmmmmmmmmmmmmmmmmmm2...",
+        "mmmmmmmmmmmmmmmmmmmmm3...",
+        "mmmmmmmmmmmmmmmmmmmmm4...",
+        "mmmmmmmmmmmmmmmmmmmmm5..."
+    ],
+    "cats": [
+        {
+            "name": "Leo",
+            "image": "static/cat_0.png"
+        },
+        {
+            "name": "Luna",
+            "image": "static/cat_1.png"
+        },
+        {
+            "name": "Candy",
+            "image": "static/cat_2.png"
+        },
+        {
+            "name": "Milk T.",
+            "image": "static/cat_3.png"
+        },
+        {
+            "name": "Cheese",
+            "image": "static/cat_4.png"
+        },
+        {
+            "name": "Friday",
+            "image": "static/cat_5.png"
+        },
+        {
+            "name": "Peach",
+            "image": "static/cat_6.png"
+        }
+    ]
+}

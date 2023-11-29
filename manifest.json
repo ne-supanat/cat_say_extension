@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "Cat says",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "static/favicon.png",
+            "48": "static/favicon.png",
+            "128": "static/favicon.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "static/bg.png",
+                "static/cat_0.png",
+                "static/cat_1.png",
+                "static/cat_2.png",
+                "static/cat_3.png",
+                "static/cat_4.png",
+                "static/cat_5.png",
+                "static/cat_6.png",
+                "static/data.json",
+                "render.html"
+            ],
+            "matches": [
+                "https://*/*"
+            ]
+        }
+    ]
+}
