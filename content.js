@@ -16,13 +16,13 @@ function createElement() {
   div.id = "render_div";
   div.innerHTML = `<img id="cat_image" class="img-fluid" style="height: 150px;" src="" alt="cat"></img>`;
   div.style.cssText =
-    "display: none; position: fixed; bottom: 10px; right: 0px; width: 150px; height: 150px; z-index: 9998; border: none;";
+    "display: none; position: fixed; bottom: 0px; right: 10px; width: 150px; height: 150px; z-index: 9998; border: none;";
 
   const div2 = document.createElement("div");
   div2.id = "bubble_text_div";
   div2.innerHTML = `<div id="bubble_text" style="border-radius: 16px 16px 0px 16px; background-color: #f1f1f1; color: black; padding: 8px; margin: 8px;">Meow</div>`;
   div2.style.cssText =
-    "display: none; position: fixed; bottom: 120px; right: 25px;";
+    "display: none; position: fixed; bottom: 120px; right: 35px;";
 
   document.body.appendChild(div);
   document.body.appendChild(div2);
@@ -87,7 +87,7 @@ function onClickSay() {
 
     saying = true;
     document.getElementById("bubble_text_div").style.display = "block";
-    delay(2000).then(() => {
+    delay(3000).then(() => {
       document.getElementById("bubble_text_div").style.display = "none";
       saying = false;
     });
