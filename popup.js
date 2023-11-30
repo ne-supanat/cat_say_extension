@@ -1,4 +1,3 @@
-var texts = [];
 var cats = [];
 
 var cat_index = 0;
@@ -15,7 +14,6 @@ function loadResource() {
   fetch(chrome.runtime.getURL("static/data.json"))
     .then((response) => response.json())
     .then((data) => {
-      texts = data.texts;
       cats = data.cats;
 
       renderCat();
